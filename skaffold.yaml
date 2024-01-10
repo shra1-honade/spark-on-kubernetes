@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+metadata:
+  name: k8spark
+build:
+  tagPolicy:
+    sha256: { }
+  artifacts:
+  - image: "us-east4-docker.pkg.dev/dataproc-pyspark-404719/spark-docker/myk8spark-artifact"
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - resources/spark_hello.yaml
